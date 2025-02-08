@@ -58,7 +58,7 @@
           <div class="contact-info">
             <p class="contact-title">Birthday</p>
 
-            <time datetime="1982-06-23">Sept 17, 2001</time>
+            <time datetime="2001-09-17">Sept 17, 2001</time>
           </div>
         </li>
 
@@ -78,32 +78,37 @@
       <div class="separator"></div>
 
       <ul class="social-list">
-        <li class="social-item">
-          <a href="https://github.com/SomnathKar000" class="social-link">
-            <ion-icon name="logo-github"></ion-icon>
-          </a>
-        </li>
-
-        <li class="social-item">
-          <a
-            href="https://www.linkedin.com/in/somnath-kar-aa73aa1a3/"
-            class="social-link"
-          >
-            <ion-icon name="logo-linkedin"></ion-icon>
-          </a>
-        </li>
-
-        <li class="social-item">
-          <a href="https://twitter.com/Somnathkar000" class="social-link">
-            <ion-icon name="logo-twitter"></ion-icon>
-          </a>
-        </li>
+        <template v-for="(contact, i) in contactListData" :key="i">
+          <li class="social-item">
+            <a :href="contact.link" class="social-link">
+              <ion-icon :name="contact.icon"></ion-icon>
+            </a>
+          </li>
+        </template>
       </ul>
     </div>
   </aside>
 </template>
 <script setup>
 import { ref } from "vue";
+
+const contactListData = [
+  {
+    name: "Github",
+    link: "https://github.com/SomnathKar000",
+    icon: "logo-github",
+  },
+  {
+    name: "LinkedIn",
+    link: "https://www.linkedin.com/in/somnath-kar-aa73aa1a3/",
+    icon: "logo-linkedin",
+  },
+  {
+    name: "Twitter",
+    link: "https://twitter.com/Somnathkar000",
+    icon: "logo-twitter",
+  },
+];
 
 const showContactsInfo = ref(false);
 
