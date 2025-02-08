@@ -24,8 +24,15 @@
       </ul>
 
       <div class="filter-select-box">
-        <button class="filter-select" data-select>
-          <div class="select-value" data-select-value>Select category</div>
+        <button
+          class="filter-select"
+          data-select
+          :class="{ active: openSelectCategoryMenu }"
+          @click="toggleSelectCategory"
+        >
+          <div class="select-value" data-select-value>
+            {{ selectedCategory }}
+          </div>
 
           <div class="select-icon">
             <ion-icon name="chevron-down"></ion-icon>
@@ -135,23 +142,35 @@ const projects = [
     alt: "arrival",
   },
 ];
-const selectedCategory = ref("All");
+const selectedCategory = ref("Select category");
+const openSelectCategoryMenu = ref(false);
 
 const categories = computed(() =>
   Array.from(new Set(["All", ...projects.map((project) => project.category)]))
 );
 
 const filteredProjects = computed(() => {
-  if (selectedCategory.value == "All") return projects;
+  if (
+    selectedCategory.value === "All" ||
+    selectedCategory.value === "Select category"
+  )
+    return projects;
   return projects.filter(
     (project) => project.category === selectedCategory.value
   );
 });
 
 function isActive(category) {
-  return selectedCategory.value == category;
+  return (
+    selectedCategory.value == category ||
+    (category == "All" && selectedCategory.value === "Select category")
+  );
 }
 function updateCategory(category) {
   selectedCategory.value = category;
+  openSelectCategoryMenu.value = false;
+}
+function toggleSelectCategory() {
+  openSelectCategoryMenu.value = !openSelectCategoryMenu.value;
 }
 </script>
