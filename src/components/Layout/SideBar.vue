@@ -1,17 +1,17 @@
 <template>
-  <aside class="sidebar" data-sidebar>
+  <aside class="sidebar" data-sidebar :class="{ active: showContactsInfo }">
     <div class="sidebar-info">
       <figure class="avatar-box">
-        <img src="/assets/my-avatar.png" alt="Richard hanrick" width="80" />
+        <img src="/assets/my-avatar.png" alt="Somnath Kar" width="80" />
       </figure>
 
       <div class="info-content">
-        <h1 class="name" title="Richard hanrick">Somnath Kar</h1>
+        <h1 class="name" title="Somnath Kar">Somnath Kar</h1>
 
         <p class="title">Software Engineer</p>
       </div>
 
-      <button class="info_more-btn">
+      <button class="info_more-btn" @click="toggleShowContactInfo">
         <span>Show Contacts</span>
 
         <ion-icon name="chevron-down"></ion-icon>
@@ -102,3 +102,12 @@
     </div>
   </aside>
 </template>
+<script setup>
+import { ref } from "vue";
+
+const showContactsInfo = ref(false);
+
+function toggleShowContactInfo() {
+  showContactsInfo.value = !showContactsInfo.value;
+}
+</script>
