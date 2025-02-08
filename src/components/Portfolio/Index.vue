@@ -10,26 +10,22 @@
 
     <section class="projects">
       <ul class="filter-list">
-        <li class="filter-item">
-          <button class="active" data-filter-btn>All</button>
-        </li>
-
-        <li class="filter-item">
-          <button data-filter-btn>Web design</button>
-        </li>
-
-        <li class="filter-item">
-          <button data-filter-btn>Applications</button>
-        </li>
-
-        <li class="filter-item">
-          <button data-filter-btn>Web development</button>
-        </li>
+        <template v-for="category in categories" :key="category">
+          <li class="filter-item">
+            <button
+              data-filter-btn
+              :class="{ active: isActive(category) }"
+              @click="updateCategory(category)"
+            >
+              {{ category }}
+            </button>
+          </li>
+        </template>
       </ul>
 
       <div class="filter-select-box">
         <button class="filter-select" data-select>
-          <div class="select-value" data-selecct-value>Select category</div>
+          <div class="select-value" data-select-value>Select category</div>
 
           <div class="select-icon">
             <ion-icon name="chevron-down"></ion-icon>
@@ -37,222 +33,125 @@
         </button>
 
         <ul class="select-list">
-          <li class="select-item">
-            <button data-select-item>All</button>
-          </li>
-
-          <li class="select-item">
-            <button data-select-item>Web design</button>
-          </li>
-
-          <li class="select-item">
-            <button data-select-item>Applications</button>
-          </li>
-
-          <li class="select-item">
-            <button data-select-item>Web development</button>
-          </li>
+          <template v-for="category in categories" :key="category">
+            <li class="select-item">
+              <button data-select-item @click="updateCategory(category)">
+                {{ category }}
+              </button>
+            </li>
+          </template>
         </ul>
       </div>
 
       <ul class="project-list">
-        <li
-          class="project-item active"
-          data-filter-item
-          data-category="web development"
-        >
-          <a href="#">
-            <figure class="project-img">
-              <div class="project-item-icon-box">
-                <ion-icon name="eye-outline"></ion-icon>
-              </div>
+        <template v-for="(project, i) in filteredProjects" :key="i">
+          <li
+            class="project-item active"
+            data-filter-item
+            :data-category="project.category"
+          >
+            <a href="#">
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
 
-              <img src="/assets/project-1.jpg" alt="finance" loading="lazy" />
-            </figure>
+                <img :src="project.image" :alt="project.alt" loading="lazy" />
+              </figure>
 
-            <h3 class="project-title">Finance</h3>
+              <h3 class="project-title">{{ project.title }}</h3>
 
-            <p class="project-category">Web development</p>
-          </a>
-        </li>
-
-        <li
-          class="project-item active"
-          data-filter-item
-          data-category="web development"
-        >
-          <a href="#">
-            <figure class="project-img">
-              <div class="project-item-icon-box">
-                <ion-icon name="eye-outline"></ion-icon>
-              </div>
-
-              <img src="/assets/project-2.png" alt="orizon" loading="lazy" />
-            </figure>
-
-            <h3 class="project-title">Orizon</h3>
-
-            <p class="project-category">Web development</p>
-          </a>
-        </li>
-
-        <li
-          class="project-item active"
-          data-filter-item
-          data-category="web design"
-        >
-          <a href="#">
-            <figure class="project-img">
-              <div class="project-item-icon-box">
-                <ion-icon name="eye-outline"></ion-icon>
-              </div>
-
-              <img src="/assets/project-3.jpg" alt="fundo" loading="lazy" />
-            </figure>
-
-            <h3 class="project-title">Fundo</h3>
-
-            <p class="project-category">Web design</p>
-          </a>
-        </li>
-
-        <li
-          class="project-item active"
-          data-filter-item
-          data-category="applications"
-        >
-          <a href="#">
-            <figure class="project-img">
-              <div class="project-item-icon-box">
-                <ion-icon name="eye-outline"></ion-icon>
-              </div>
-
-              <img
-                src="/assets/project-4.png"
-                alt="brawlhalla"
-                loading="lazy"
-              />
-            </figure>
-
-            <h3 class="project-title">Brawlhalla</h3>
-
-            <p class="project-category">Applications</p>
-          </a>
-        </li>
-
-        <li
-          class="project-item active"
-          data-filter-item
-          data-category="web design"
-        >
-          <a href="#">
-            <figure class="project-img">
-              <div class="project-item-icon-box">
-                <ion-icon name="eye-outline"></ion-icon>
-              </div>
-
-              <img src="/assets/project-5.png" alt="dsm." loading="lazy" />
-            </figure>
-
-            <h3 class="project-title">DSM.</h3>
-
-            <p class="project-category">Web design</p>
-          </a>
-        </li>
-
-        <li
-          class="project-item active"
-          data-filter-item
-          data-category="web design"
-        >
-          <a href="#">
-            <figure class="project-img">
-              <div class="project-item-icon-box">
-                <ion-icon name="eye-outline"></ion-icon>
-              </div>
-
-              <img src="/assets/project-6.png" alt="metaspark" loading="lazy" />
-            </figure>
-
-            <h3 class="project-title">MetaSpark</h3>
-
-            <p class="project-category">Web design</p>
-          </a>
-        </li>
-
-        <li
-          class="project-item active"
-          data-filter-item
-          data-category="web development"
-        >
-          <a href="#">
-            <figure class="project-img">
-              <div class="project-item-icon-box">
-                <ion-icon name="eye-outline"></ion-icon>
-              </div>
-
-              <img src="/assets/project-7.png" alt="summary" loading="lazy" />
-            </figure>
-
-            <h3 class="project-title">Summary</h3>
-
-            <p class="project-category">Web development</p>
-          </a>
-        </li>
-
-        <li
-          class="project-item active"
-          data-filter-item
-          data-category="applications"
-        >
-          <a href="#">
-            <figure class="project-img">
-              <div class="project-item-icon-box">
-                <ion-icon name="eye-outline"></ion-icon>
-              </div>
-
-              <img
-                src="/assets/project-8.jpg"
-                alt="task manager"
-                loading="lazy"
-              />
-            </figure>
-
-            <h3 class="project-title">Task Manager</h3>
-
-            <p class="project-category">Applications</p>
-          </a>
-        </li>
-
-        <li
-          class="project-item active"
-          data-filter-item
-          data-category="web development"
-        >
-          <a href="#">
-            <figure class="project-img">
-              <div class="project-item-icon-box">
-                <ion-icon name="eye-outline"></ion-icon>
-              </div>
-
-              <img src="/assets/project-9.png" alt="arrival" loading="lazy" />
-            </figure>
-
-            <h3 class="project-title">Arrival</h3>
-
-            <p class="project-category">Web development</p>
-          </a>
-        </li>
+              <p class="project-category">{{ project.category }}</p>
+            </a>
+          </li>
+        </template>
       </ul>
     </section>
   </article>
 </template>
 
 <script setup>
+import { ref, computed } from "vue";
 defineProps({
   isPortfolioOpen: {
     type: Boolean,
     default: () => false,
   },
 });
+
+const projects = [
+  {
+    title: "Finance",
+    category: "Web development",
+    image: "/assets/project-1.jpg",
+    alt: "finance",
+  },
+  {
+    title: "Orizon",
+    category: "Web development",
+    image: "/assets/project-2.png",
+    alt: "orizon",
+  },
+  {
+    title: "Fundo",
+    category: "Web design",
+    image: "/assets/project-3.jpg",
+    alt: "fundo",
+  },
+  {
+    title: "Brawlhalla",
+    category: "Applications",
+    image: "/assets/project-4.png",
+    alt: "brawlhalla",
+  },
+  {
+    title: "DSM.",
+    category: "Web design",
+    image: "/assets/project-5.png",
+    alt: "dsm.",
+  },
+  {
+    title: "MetaSpark",
+    category: "Web design",
+    image: "/assets/project-6.png",
+    alt: "metaspark",
+  },
+  {
+    title: "Summary",
+    category: "Web development",
+    image: "/assets/project-7.png",
+    alt: "summary",
+  },
+  {
+    title: "Task Manager",
+    category: "Applications",
+    image: "/assets/project-8.jpg",
+    alt: "task manager",
+  },
+  {
+    title: "Arrival",
+    category: "Web development",
+    image: "/assets/project-9.png",
+    alt: "arrival",
+  },
+];
+const selectedCategory = ref("All");
+
+const categories = computed(() =>
+  Array.from(new Set(["All", ...projects.map((project) => project.category)]))
+);
+
+const filteredProjects = computed(() => {
+  if (selectedCategory.value == "All") return projects;
+  return projects.filter(
+    (project) => project.category === selectedCategory.value
+  );
+});
+
+function isActive(category) {
+  return selectedCategory.value == category;
+}
+function updateCategory(category) {
+  selectedCategory.value = category;
+}
 </script>
