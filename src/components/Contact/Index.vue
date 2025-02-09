@@ -22,9 +22,10 @@
     <section class="contact-form">
       <h3 class="h3 form-title">Contact Form</h3>
 
-      <form action="#" class="form" data-form>
+      <form action="#" class="form" data-form @submit.prevent="handleSubmit">
         <div class="input-wrapper">
           <input
+            v-model="form.fullName"
             type="text"
             name="fullname"
             class="form-input"
@@ -34,6 +35,7 @@
           />
 
           <input
+            v-model="form.email"
             type="email"
             name="email"
             class="form-input"
@@ -44,6 +46,7 @@
         </div>
 
         <textarea
+          v-model="form.message"
           name="message"
           class="form-input"
           placeholder="Your Message"
@@ -51,7 +54,7 @@
           data-form-input
         ></textarea>
 
-        <button class="form-btn" type="submit" disabled data-form-btn>
+        <button class="form-btn" type="submit" data-form-btn>
           <ion-icon name="paper-plane"></ion-icon>
           <span>Send Message</span>
         </button>
@@ -61,6 +64,10 @@
 </template>
 
 <script setup>
+import useContactForm from "../../composables/useContactForm";
+
+const { form, handleSubmit, errors } = useContactForm();
+
 defineProps({
   isContactOpen: {
     type: Boolean,

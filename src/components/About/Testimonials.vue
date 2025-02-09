@@ -1,9 +1,12 @@
 <template>
-  <section class="testimonials">
+  <section v-if="profileData.testimonials.show" class="testimonials">
     <h3 class="h3 testimonials-title">Testimonials</h3>
 
     <ul class="testimonials-list has-scrollbar">
-      <template v-for="(testimonial, i) in testimonials" :key="i">
+      <template
+        v-for="(testimonial, i) in profileData.testimonials.data"
+        :key="i"
+      >
         <li class="testimonials-item">
           <div
             class="content-card"
@@ -43,6 +46,7 @@
 <script setup>
 import { ref } from "vue";
 import TestimonialModel from "./TestimonialModel.vue";
+import profileData from "../data/profileData";
 
 const testimonials = [
   {
@@ -70,11 +74,13 @@ const testimonials = [
       "Richard was hired to create a corporate identity. We were very pleased with the work done. She has a lot of experience and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt consectetur adipiscing elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.",
   },
 ];
-const selectedTestimonial = ref(testimonials[0]);
+const selectedTestimonial = ref(profileData.testimonials.data[0]);
 const isTestimonialModelOpen = ref(false);
 
 function openModel(testimonial) {
-  isTestimonialModelOpen.value = true;
-  selectedTestimonial.value = testimonial;
+  setTimeout(() => {
+    isTestimonialModelOpen.value = true;
+    selectedTestimonial.value = testimonial;
+  });
 }
 </script>

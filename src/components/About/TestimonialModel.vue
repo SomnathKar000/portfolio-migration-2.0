@@ -1,6 +1,5 @@
 <template>
   <div
-    ref="testimonialModelRef"
     class="modal-container"
     data-modal-container
     :class="{ active: isTestimonialModelOpen }"
@@ -11,7 +10,7 @@
       :class="{ active: isTestimonialModelOpen }"
     ></div>
 
-    <section class="testimonials-modal">
+    <section ref="testimonialModelRef" class="testimonials-modal">
       <button class="modal-close-btn" @click="emits('closeModel')">
         <ion-icon name="close-outline"></ion-icon>
       </button>
@@ -72,11 +71,11 @@ onUnmounted(() => {
 });
 
 function handleClickOutSide(event) {
-  //   if (
-  //     !testimonialModelRef.value.contains(event.target) &&
-  //     props.isTestimonialModelOpen
-  //   ) {
-  //     emits("closeModel");
-  //   }
+  if (
+    !testimonialModelRef.value.contains(event.target) &&
+    props.isTestimonialModelOpen
+  ) {
+    emits("closeModel");
+  }
 }
 </script>

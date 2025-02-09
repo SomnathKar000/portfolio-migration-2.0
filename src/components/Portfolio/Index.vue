@@ -79,6 +79,8 @@
 
 <script setup>
 import { ref, computed } from "vue";
+import profileData from "../data/profileData";
+
 defineProps({
   isPortfolioOpen: {
     type: Boolean,
@@ -86,67 +88,16 @@ defineProps({
   },
 });
 
-const projects = [
-  {
-    title: "Finance",
-    category: "Web development",
-    image: "/assets/project-1.jpg",
-    alt: "finance",
-  },
-  {
-    title: "Orizon",
-    category: "Web development",
-    image: "/assets/project-2.png",
-    alt: "orizon",
-  },
-  {
-    title: "Fundo",
-    category: "Web design",
-    image: "/assets/project-3.jpg",
-    alt: "fundo",
-  },
-  {
-    title: "Brawlhalla",
-    category: "Applications",
-    image: "/assets/project-4.png",
-    alt: "brawlhalla",
-  },
-  {
-    title: "DSM.",
-    category: "Web design",
-    image: "/assets/project-5.png",
-    alt: "dsm.",
-  },
-  {
-    title: "MetaSpark",
-    category: "Web design",
-    image: "/assets/project-6.png",
-    alt: "metaspark",
-  },
-  {
-    title: "Summary",
-    category: "Web development",
-    image: "/assets/project-7.png",
-    alt: "summary",
-  },
-  {
-    title: "Task Manager",
-    category: "Applications",
-    image: "/assets/project-8.jpg",
-    alt: "task manager",
-  },
-  {
-    title: "Arrival",
-    category: "Web development",
-    image: "/assets/project-9.png",
-    alt: "arrival",
-  },
-];
 const selectedCategory = ref("Select category");
 const openSelectCategoryMenu = ref(false);
 
 const categories = computed(() =>
-  Array.from(new Set(["All", ...projects.map((project) => project.category)]))
+  Array.from(
+    new Set([
+      "All",
+      ...profileData.projects?.map((project) => project.category),
+    ])
+  )
 );
 
 const filteredProjects = computed(() => {
@@ -154,8 +105,8 @@ const filteredProjects = computed(() => {
     selectedCategory.value === "All" ||
     selectedCategory.value === "Select category"
   )
-    return projects;
-  return projects.filter(
+    return profileData.projects;
+  return profileData.projects?.filter(
     (project) => project.category === selectedCategory.value
   );
 });

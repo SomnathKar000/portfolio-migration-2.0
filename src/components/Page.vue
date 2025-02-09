@@ -28,7 +28,7 @@ import Portfolio from "./Portfolio/Index.vue";
 import Blog from "./Blog/Index.vue";
 import Contact from "./Contact/Index.vue";
 
-const navButtons = ["About", "Resume", "Portfolio", "Blog", "Contact"];
+const navButtons = ["About", "Resume", "Portfolio", "Contact"];
 
 const currentPanel = ref("About");
 
