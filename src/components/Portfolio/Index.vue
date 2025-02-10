@@ -57,7 +57,7 @@
             data-filter-item
             :data-category="project.category"
           >
-            <a href="#">
+            <a :href="project.link" target="_blank">
               <figure class="project-img">
                 <div class="project-item-icon-box">
                   <ion-icon name="eye-outline"></ion-icon>
