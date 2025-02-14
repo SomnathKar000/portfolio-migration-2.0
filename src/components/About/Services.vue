@@ -22,5 +22,5 @@
   </section>
 </template>
 <script setup>
-import profileData from "../data/profileData";
+import profileData from "../../data/profileData";
 </script>
