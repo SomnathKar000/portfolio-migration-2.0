@@ -15,7 +15,7 @@
 import Clients from "./Clients.vue";
 import Testimonials from "./Testimonials.vue";
 import Services from "./Services.vue";
-import profileData from "../data/profileData.js";
+import profileData from "../../data/profileData.js";
 
 defineProps({
   isAboutOpen: {

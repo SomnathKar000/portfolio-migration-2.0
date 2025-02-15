@@ -21,7 +21,7 @@
 <script setup>
 import TimeLine from "./TimeLine.vue";
 import Skills from "./Skills.vue";
-import profileData from "../data/profileData";
+import profileData from "../../data/profileData";
 
 defineProps({
   isResumeOpen: {

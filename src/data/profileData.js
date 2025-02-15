@@ -2,7 +2,7 @@ export default {
   personalInfo: {
     name: "Somnath Kar",
     avatar:
-      "https://github-production-user-asset-6210df.s3.amazonaws.com/108184610/411649077-a5decc34-8541-446b-a59b-d2737a5b443c.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250210%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250210T162410Z&X-Amz-Expires=300&X-Amz-Signature=a8fb525a79d148a21d25c60a8f06ffcd6ffa11ad3db2d7481469f99368fdd768&X-Amz-SignedHeaders=host",
+      "https://github-production-user-asset-6210df.s3.amazonaws.com/108184610/413517632-168808dc-5506-4c0b-bfb3-661b6383557b.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250215%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250215T055140Z&X-Amz-Expires=300&X-Amz-Signature=2f3d380067f33b81fc45c219f9e7d85fe62f9f79ffb479008cbd78ff076553c4&X-Amz-SignedHeaders=host",
     title: "Software Engineer",
     email: "somnathkar2023@gmail.com",
     phone: "+918509592835",

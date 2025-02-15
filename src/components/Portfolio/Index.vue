@@ -79,7 +79,7 @@
 
 <script setup>
 import { ref, computed } from "vue";
-import profileData from "../data/profileData";
+import profileData from "../../data/profileData";
 
 defineProps({
   isPortfolioOpen: {

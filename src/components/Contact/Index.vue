@@ -65,7 +65,7 @@
 
 <script setup>
 import useContactForm from "../../composables/useContactForm";
-import profileData from "../data/profileData";
+import profileData from "../../data/profileData";
 
 const { form, handleSubmit, errors } = useContactForm();
 

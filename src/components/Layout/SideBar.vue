@@ -104,7 +104,7 @@
 <script setup>
 import { ref, computed } from "vue";
 import { formatDate } from "../../utils/helper";
-import profileData from "../data/profileData";
+import profileData from "../../data/profileData";
 
 const showContactsInfo = ref(false);
 const formattedDate = computed(() =>
