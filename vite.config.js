@@ -5,4 +5,7 @@ import vue from "@vitejs/plugin-vue";
 export default defineConfig({
   plugins: [vue()],
   publicDir: "public",
+  server: {
+    allowedHosts: ["ec2-3-110-124-43.ap-south-1.compute.amazonaws.com"],
+  },
 });
