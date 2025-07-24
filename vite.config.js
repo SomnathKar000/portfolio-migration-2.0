@@ -6,6 +6,6 @@ export default defineConfig({
   plugins: [vue()],
   publicDir: "public",
   server: {
-    allowedHosts: ["ec2-3-110-124-43.ap-south-1.compute.amazonaws.com"],
+    allowedHosts: ["ec2-15-206-151-87.ap-south-1.compute.amazonaws.com"],
   },
 });
